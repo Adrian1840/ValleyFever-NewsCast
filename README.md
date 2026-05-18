@@ -1,7 +1,8 @@
 # News Media Coverage Predictors of Valley Fever Case Rates
 
 ## Project Overview
-This project looks at how affordable housing availability for low-income households has changed across U.S. states from 2014 to 2023. It also looks at whether housing shortages are associated with higher poverty exposure and student homelessness. Using state-level averages that were computed from county-level mobility metrics provided by the Urban Institute, I create vizualtions to highlight states with the most servere shortages and linear regression models that test these relationships. Ultimately, the results from this project can be used to inform which states should allocate resources for affordable housing and homelessness-prevention for students in public-schools across the nation.
+Endemic to California’s Central Valley and southwestern parts of the United States, Valley Fever is a respiratory disease that may be influenced by various environmental factors. The disease is caused by the inhalation of fungal spores within the soil and is often under-reported. Prior research focuses on how environmental conditions such as precipitation, temperature, and wildfires predict future case reports of the disease. However, there is limited research on how public awareness and media coverage plays a role in these predictions. This project examines how news articles mentioning terms related to Valley Fever improve predictive modeling of monthly case rates in Fresno and
+Kern county. To compare predictive accuracy, this project uses regression, Long Short-Term Memory, and Seasonal AutoRegressive Integrated Moving Average models. The results suggest that public awareness and education of the Valley Fever may influence reported case patterns across counties.
 
 ## Project Structure
 ```text
