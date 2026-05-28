@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project investigates whether public awareness communicated through news media contributes to observed Valley
+This project investigates whether public awareness communicated through news media coverage contributes to Valley
 Fever case reporting patterns in high-incidence regions of California's Central Valley such as Fresno and Kern County. We combine environmental predictors from other sources and news media features scraped from Google News articles mentioning terms related to Valley Fever. News media features include article frequency, Central Valley county mentions, and risk-related terminology within these Google News articles. These features are evaluated using regression, Long Short-Term Memory (LSTM), and SARIMAX forecasting models. The goal is to evaluate whether media urgency and news coverage corresponds to changes in reported case rates across Fresno and Kern County.
 
 ## Repository Contents
