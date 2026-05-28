@@ -41,8 +41,6 @@ ValleyFever-NewsCast/
 │   │
 │   └── processed/
 │       ├── final_model_dataframe.csv
-│       ├── fresno_pfis_100.csv
-│       ├── kern_pfis_100.csv
 │       ├── news_features_lag3.csv
 │       └── news_features_unlagged.csv
 │
@@ -56,7 +54,10 @@ ValleyFever-NewsCast/
 │   ├── figures/
 │   ├── tables/
 │   ├── forecasts/
-│   └── hyperparameter_search/
+│   ├── hyperparameter_search/
+|   └── pfi/
+|       ├── fresno_pfis_100.csv
+|       └── kern_pfis_100.csv
 │
 └── paper/
     └── News_Media_Coverage_Predictors_of_Valley_Fever_Case_Rates.pdf
