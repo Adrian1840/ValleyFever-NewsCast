@@ -1,4 +1,4 @@
-This repository contains code and data-processing notebooks for analyzing whether Google News media coverage of Valley Fever contributes to monthly case rate prediction in Fresno and Kern County, California.
+# News Media Coverage Predictors of Valley Fever Case Rates
 
 ## Project Overview
 
