@@ -7,8 +7,9 @@ Fever case reporting patterns in high-incidence regions of California's Central 
 
 ## Repository Contents
 
-- `notebooks/01_news_scraping_nlp.ipynb`: Scrapes Google News articles and extracts media-related features.
-- `notebooks/02_preprocessing_lags.ipynb`: Merges news, environmental, and case-rate data; creates lagged variables.
+- `notebooks/01_news_scraping.ipynb`: Scrapes Google News articles.
+- `notebooks/02_article_processing_nlp.ipynb`: Cleans article text, and extracts media-related features.
+- `notebooks/03_preprocessing_lags.ipynb`: Merges news, environmental, and case-rate data; creates lagged variables.
 - `notebooks/03_regression_analysis.ipynb`: Runs regression models and influence diagnostics.
 - `notebooks/04_forecasting_lstm_sarimax.ipynb`: Runs LSTM, PFI, SARIMAX, and forecasting evaluation.
 - `data/raw/`: Original Google News RSS outputs prior to article extraction.
@@ -45,8 +46,9 @@ ValleyFever-NewsCast/
 │       └── news_features_unlagged.csv
 │
 ├── notebooks/
-│   ├── 01_news_scraping_nlp.ipynb
-│   ├── 02_preprocessing_lags.ipynb
+│   ├── 01_news_scraping.ipynb
+│   ├── 02_article_processing_nlp.ipynb
+│   ├── 02_time_lag_preprocessing.ipynb
 │   ├── 03_regression_analysis.ipynb
 │   └── 04_forecasting_lstm_sarimax.ipynb
 │
