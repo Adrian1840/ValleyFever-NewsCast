@@ -55,6 +55,9 @@ ValleyFever-NewsCast/
 │   ├── tables/
 │   ├── forecasts/
 │   ├── hyperparameter_search/
+|       ├── fresno_grid_search_results.csv
+|       └── kern_grid_search_results.csv
+
 |   └── pfi/
 |       ├── fresno_pfis_100.csv
 |       └── kern_pfis_100.csv
