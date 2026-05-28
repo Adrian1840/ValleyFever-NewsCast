@@ -11,11 +11,14 @@ Fever case reporting patterns in high-incidence regions of California's Central 
 - `notebooks/02_preprocessing_lags.ipynb`: Merges news, environmental, and case-rate data; creates lagged variables.
 - `notebooks/03_regression_analysis.ipynb`: Runs regression models and influence diagnostics.
 - `notebooks/04_forecasting_lstm_sarimax.ipynb`: Runs LSTM, PFI, SARIMAX, and forecasting evaluation.
-- `data/`: Raw, processed, and external datasets.
-- `results/`: Figures, tables, and model outputs.
-- `paper/`: Final research paper.
+- `data/raw/`: Original Google News RSS outputs prior to article extraction.
+- `data/raw/external/`: Environmental and Valley Fever case-rate datasets adapted from the ValleyCast repository.
+- `data/interim/`: Cleaned article-level datasets and intermediate monthly news aggregations.
+- `data/processed/`: Final modeling datasets used for regression, LSTM, and SARIMAX forecasting analyses.
+-  `results/`: Generated figures, forecasting outputs, hyperparameter search results, and evaluation tables.
+-  `paper/`: Final conference paper manuscript.
 
-  
+
 ## Project Structure
 ```text
 ValleyFever-NewsCast/
@@ -24,9 +27,24 @@ ValleyFever-NewsCast/
 ├── requirements.txt
 │
 ├── data/
+│   │
 │   ├── raw/
-│   ├── processed/
-│   └── external/
+│   │   └── google_news_rss_raw.csv
+│   │
+│   ├── external/
+│   │   ├── Fresno_Aggregate.csv
+│   │   └── Kern_Aggregate.csv
+│   │
+│   ├── interim/
+│   │   ├── google_news_rss_clean.csv
+│   │   └── monthly_news_counts.csv
+│   │
+│   └── processed/
+│       ├── final_model_dataframe.csv
+│       ├── fresno_pfis_100.csv
+│       ├── kern_pfis_100.csv
+│       ├── news_features_lag3.csv
+│       └── news_features_unlagged.csv
 │
 ├── notebooks/
 │   ├── 01_news_scraping_nlp.ipynb
@@ -37,7 +55,8 @@ ValleyFever-NewsCast/
 ├── results/
 │   ├── figures/
 │   ├── tables/
-│   └── model_outputs/
+│   ├── forecasts/
+│   └── hyperparameter_search/
 │
 └── paper/
     └── News_Media_Coverage_Predictors_of_Valley_Fever_Case_Rates.pdf
