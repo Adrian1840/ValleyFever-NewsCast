@@ -87,4 +87,4 @@ Run the notebooks in numerical order from `01` to `04`.
 
 ## Author
 Adrian Lopez
-MATH 120 - Fall/2025
+Spring 2026
