@@ -18,7 +18,7 @@ Fever case reporting patterns in high-incidence regions of California's Central 
   
 ## Project Structure
 ```text
-VF-NewsMedia-Forecasting/
+ValleyFever-NewsCast/
 │
 ├── README.md
 ├── requirements.txt
