@@ -46,7 +46,7 @@ ValleyFever-NewsCast/
 ## Data Sources
 
 - ValleyCast environmental and case-rate data
-- Google News RSS results
+- Google News RSS results extracted using `pygooglenews` 
 - Newspaper article text extracted using `newspaper4k`
 
 ## Main Methods
