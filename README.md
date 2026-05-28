@@ -12,7 +12,7 @@ Fever case reporting patterns in high-incidence regions of California's Central 
 - `notebooks/03_regression_analysis.ipynb`: Runs regression models and influence diagnostics.
 - `notebooks/04_forecasting_lstm_sarimax.ipynb`: Runs LSTM, PFI, SARIMAX, and forecasting evaluation.
 - `data/raw/`: Original Google News RSS outputs prior to article extraction.
-- `data/raw/external/`: Environmental and Valley Fever case-rate datasets adapted from the ValleyCast repository.
+- `data/external/`: Environmental and Valley Fever case-rate datasets adapted from the ValleyCast repository.
 - `data/interim/`: Cleaned article-level datasets and intermediate monthly news aggregations.
 - `data/processed/`: Final modeling datasets used for regression, LSTM, and SARIMAX forecasting analyses.
 -  `results/`: Generated figures, forecasting outputs, hyperparameter search results, and evaluation tables.
