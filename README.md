@@ -31,7 +31,8 @@ ValleyFever-NewsCast/
 │   │
 │   ├── raw/
 │   │   ├── google_news_rss_raw.csv
-│   │   └── google_news_rss_with_text.csv
+│   │   ├── google_news_rss_with_text.csv
+│   │   └── article_counts_only.csv
 │   │
 │   ├── external/
 │   │   ├── Fresno_Aggregate.csv
@@ -39,7 +40,6 @@ ValleyFever-NewsCast/
 │   │
 │   ├── interim/
 │   │   ├── google_news_rss_clean.csv
-│   │   └── monthly_news_counts.csv
 │   │
 │   └── processed/
 │       ├── final_model_dataframe.csv
