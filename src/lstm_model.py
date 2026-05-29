@@ -4,11 +4,27 @@ import torch.nn as nn
 import torch.nn.functional as F
 import lightning as L
 from torch.optim import Adam
+import numpy as np
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
 
-def prep_county_data_gen(PATH, county, training_percent=0.85):
 
-    # Read aggregate data
-    df = pd.read_csv(PATH + "AggregateData/" + county + "_Aggregate.csv")
+def prep_county_data_gen(
+    aggregate_path,
+    news_features_path,
+    county,
+    training_percent=0.85
+):
+    """
+    Prepare county-level Valley Fever data for LSTM modeling.
+    Returns
+        df, X_train, X_test, y_train, y_test, scaler_X, scaler_y,
+        train_size, test_size
+    """
+
+    # Read county aggregate and news feature data
+    df = pd.read_csv(aggregate_path)
+    news_features = pd.read_csv(news_features_path)
 
     # County-specific columns to drop
     drop_cols = ["WIND_EventCount"]
@@ -16,28 +32,35 @@ def prep_county_data_gen(PATH, county, training_percent=0.85):
     if county.lower() == "kern":
         drop_cols.append("FIRE_Acres_Burned")
 
-    # Drop columns
-    df = df.drop(columns=[col for col in drop_cols if col in df.columns])
+    df = df.drop(
+        columns=[col for col in drop_cols if col in df.columns]
+    )
 
-    # Merge news features
-    df = df.merge(news_monthly, on=["Year-Month"], how="left")
-    df = df.merge(article_features, on=["Year-Month"], how="left")
+    # Merge unlagged news features
+    df = df.merge(
+        news_features,
+        on="Year-Month",
+        how="left"
+    )
 
-    # Fill NA values
+    # Fill missing values
     df = df.fillna(0)
 
-    # Define predictors
-    X = df.iloc[:, 2:]
+    # Predictors: drop Year-Month and VFRate
+    X = df.drop(columns=["Year-Month", "VFRate"])
 
-    # Define response (logged case rates)
-    y = np.log1p(df.iloc[:, 1:2])
+    # Response: log-transformed case rate
+    y = np.log1p(df[["VFRate"]])
 
     # Train/test split
     train_size = int(training_percent * len(X))
     test_size = len(X) - train_size
 
-    X_train, X_test = X[:train_size], X[train_size:]
-    y_train, y_test = y[:train_size], y[train_size:]
+    X_train = X.iloc[:train_size]
+    X_test = X.iloc[train_size:]
+
+    y_train = y.iloc[:train_size]
+    y_test = y.iloc[train_size:]
 
     # Scaling
     scaler_X = MinMaxScaler()
