@@ -29,14 +29,14 @@ ValleyFever-NewsCast/
 │
 ├── data/
 │   │
+│   ├── external/
+│   │   ├── Fresno_Aggregate.csv
+│   │   └── Kern_Aggregate.csv
+│   │
 │   ├── raw/
 │   │   ├── google_news_rss_raw.csv
 │   │   ├── google_news_rss_with_text.csv
 │   │   └── article_counts_only.csv
-│   │
-│   ├── external/
-│   │   ├── Fresno_Aggregate.csv
-│   │   └── Kern_Aggregate.csv
 │   │
 │   ├── interim/
 │   │   ├── google_news_rss_clean.csv
