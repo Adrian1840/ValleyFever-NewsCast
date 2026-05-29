@@ -6,6 +6,36 @@ from sklearn.metrics import mean_squared_error
 
 from lstm_model import LightningLSTM
 
+from torch.utils.data import Dataset, DataLoader
+import torch
+
+
+class TimeSeriesDataset(Dataset):
+    def __init__(self, X, y, seq_length):
+        self.X = torch.tensor(X, dtype=torch.float32)
+        self.y = torch.tensor(y, dtype=torch.float32)
+        self.seq_length = seq_length
+
+    def __len__(self):
+        return len(self.X) - self.seq_length
+
+    def __getitem__(self, idx):
+        X_seq = self.X[idx:idx + self.seq_length]
+        y_target = self.y[idx + self.seq_length]
+        return X_seq, y_target
+
+
+def make_dataloaders(X_train, X_test, y_train, y_test, seq_length, batch_size):
+    train_dataset = TimeSeriesDataset(X_train, y_train, seq_length)
+    test_dataset = TimeSeriesDataset(X_test, y_test, seq_length)
+
+    if len(train_dataset) == 0 or len(test_dataset) == 0:
+        return None, None
+
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=False)
+    test_loader = DataLoader(test_dataset, batch_size=1, shuffle=False)
+
+    return train_loader, test_loader
 
 def fit_model(num_features, seq_length, hidden_size, dropout, lr,
               train_loader, num_layers=1, max_epochs=100):
