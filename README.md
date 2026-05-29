@@ -30,7 +30,8 @@ ValleyFever-NewsCast/
 ├── data/
 │   │
 │   ├── raw/
-│   │   └── google_news_rss_raw.csv
+│   │   ├── google_news_rss_raw.csv
+│   │   └── google_news_rss_with_text.csv
 │   │
 │   ├── external/
 │   │   ├── Fresno_Aggregate.csv
