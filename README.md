@@ -18,7 +18,7 @@ Fever case reporting patterns in high-incidence regions of California's Central 
 - `data/external/`: Environmental and Valley Fever case-rate datasets adapted from the ValleyCast repository.
 - `data/interim/`: Cleaned article-level datasets and intermediate monthly news aggregations.
 - `data/processed/`: Final modeling datasets used for regression, LSTM, and SARIMAX forecasting analyses.
--  `src/`: Python modules for model definitions, preprocessing utilities, evaluation functions, and plotting functions.
+-  `src/`: Python modules for LSTM/SARIMAX helper functions, evaluation functions, and plotting functions.
 -  `results/`: Generated figures, forecasting outputs, hyperparameter search results, and evaluation tables.
 -  `paper/`: Final conference paper manuscript.
 
