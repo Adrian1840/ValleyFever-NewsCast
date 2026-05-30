@@ -65,14 +65,34 @@ ValleyFever-NewsCast/
 │   └── plotting.py
 │
 ├── results/
-│   ├── figures/
-│   ├── forecasts/
-│   ├── hyperparameter_search/
-│       ├── fresno_grid_search_results.csv
-│       └── kern_grid_search_results.csv
-|   └── pfi/
-│       ├── fresno_pfis_100.csv
-│       └── kern_pfis_100.csv
+│   │
+│   ├── regression/
+│   │   ├── cooks_model.csv
+│   │   └── dffits_model.csv
+│   │
+│   ├── lstm/
+│   │   ├── fresno_lstm.png
+│   │   ├── kern_lstm.png
+│   │   └── hyperparameter_search/
+│   │       ├── fresno_grid_search_results.csv
+│   │       └── kern_grid_search_results.csv
+│   │
+│   ├── pfi/
+│   │   ├── fresno_pfi.png
+│   │   ├── kern_pfi.png
+│   │   ├── fresno_pfis_100.csv
+│   │   └── kern_pfis_100.csv
+│   │
+│   ├── pacf/
+│   │   ├── fresno_pacf.png
+│   │   └── kern_pacf.png
+│   │
+│   └── sarimax/
+│       ├── fresno_sarimax.png
+│       ├── kern_sarimax.png
+│       ├── fresno_news.png
+│       └── kern_news.png
+│
 │
 └── paper/
     └── News_Media_Coverage_Predictors_of_Valley_Fever_Case_Rates.pdf
