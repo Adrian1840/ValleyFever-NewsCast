@@ -1,6 +1,78 @@
 
 import plotly.graph_objects as go
 
+
+def plot_combined_vf_styled(county, df):
+    df = df.sort_values("Year-Month")
+
+    fig = go.Figure()
+
+    bar_color = "#7499d4"
+    line_color = "#c22f53"
+
+    fig.add_trace(go.Bar(
+        x=df["Year-Month"],
+        y=df["VFRate"],
+        name="VF Case Rates",
+        marker_color=bar_color,
+        opacity=0.9,
+        yaxis="y"
+    ))
+
+    fig.add_trace(go.Scatter(
+        x=df["Year-Month"],
+        y=df["Num_Articles"],
+        name="News Articles",
+        mode="markers+lines",
+        line=dict(color=line_color, width=6),
+        marker=dict(size=11),
+        yaxis="y2"
+    ))
+
+    fig.update_layout(
+        xaxis_title="Time",
+
+        yaxis=dict(
+            title="Case Rate",
+            titlefont=dict(color=bar_color),
+            tickfont=dict(color=bar_color),
+            showgrid=True,
+            gridcolor="rgba(0,0,0,0.12)"
+        ),
+
+        yaxis2=dict(
+            title="Number of Articles",
+            titlefont=dict(color=line_color),
+            tickfont=dict(color=line_color),
+            overlaying="y",
+            side="right",
+            showgrid=False
+        ),
+
+        xaxis=dict(
+            showgrid=True,
+            gridcolor="rgba(0,0,0,0.12)"
+        ),
+
+        autosize=False,
+        width=1920,
+        height=1080,
+        font=dict(size=34),
+        template="plotly_white",
+
+        legend=dict(
+            x=0.04,
+            y=0.97,
+            xanchor="left",
+            yanchor="top",
+            bgcolor="white",
+            bordercolor="black",
+            borderwidth=2
+        )
+    )
+
+    return fig
+    
 def run_lstm_pfi_experiment(
     county_name,
     num_features,
