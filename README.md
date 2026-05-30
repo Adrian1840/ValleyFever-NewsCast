@@ -117,11 +117,6 @@ ValleyFever-NewsCast/
 
 Run the notebooks in numerical order from `01` to `06`.
 
-## Author
-Adrian Lopez
-
-Spring 2026
-
 ## Conference Submission
 
 This repository accompanies the paper:
@@ -129,3 +124,9 @@ This repository accompanies the paper:
 *News Media Coverage Predictors of Valley Fever Case Rates*
 
 submitted to the Iberoamerican Congress on Pattern Recognition (CIARP 2026).
+
+
+## Author
+Adrian Lopez
+
+Spring 2026
