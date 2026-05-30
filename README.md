@@ -79,7 +79,7 @@ ValleyFever-NewsCast/
 
 ## Data Sources
 
-- ValleyCast environmental and case-rate data
+- ValleyCast environmental and case-rate data: https://github.com/MBanuelos/ValleyCast
 - Google News RSS results extracted using `pygooglenews` 
 - Newspaper article text extracted using `newspaper4k`
 
@@ -94,8 +94,9 @@ ValleyFever-NewsCast/
 
 ## Reproducibility
 
-Run the notebooks in numerical order from `01` to `04`.
+Run the notebooks in numerical order from `01` to `06`.
 
 ## Author
 Adrian Lopez
+
 Spring 2026
