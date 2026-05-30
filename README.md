@@ -59,6 +59,7 @@ ValleyFever-NewsCast/
 │
 ├── src/
 │   ├── lstm_model.py
+│   ├── sarimax_model.py
 │   ├── evaluation.py
 │   └── plotting.py
 │
