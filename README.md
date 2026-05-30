@@ -10,7 +10,7 @@ communicated to the public and whether media urgency corresponds to changes in r
 
 - `notebooks/01_news_scraping.ipynb`: Scrapes Google News articles.
 - `notebooks/02_article_processing_nlp.ipynb`: Cleans article text, and extracts media-related features.
-- `notebooks/03_preprocessing_lags.ipynb`: Merges news, environmental, and case-rate data; creates lagged variables.
+- `notebooks/03_preprocessing_lags.ipynb`: Merges news, environmental, and case-rate data; creates lagged variables and final model dataframe.
 - `notebooks/04_regression_analysis.ipynb`: Runs regression models and influence diagnostics.
 - `notebooks/05_forecasting_lstm.ipynb`: Runs LSTM, PFI, and forecasting evaluation.
 - `notebooks/06_forecasting_sarimax.ipynb`: Runs SARIMAX and forecasting evaluation.
