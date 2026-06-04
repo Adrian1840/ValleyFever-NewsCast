@@ -100,7 +100,7 @@ ValleyFever-NewsCast/
 
 ## Data Sources
 
-- ValleyCast environmental and case-rate data: https://github.com/MBanuelos/ValleyCast
+- ValleyCast environmental and Fresno/Kern VF case rate data: https://github.com/MBanuelos/ValleyCast
 - Google News RSS results extracted using `pygooglenews` 
 - Newspaper article text extracted using `newspaper4k`
 
