@@ -14,6 +14,8 @@ communicated to the public and whether media urgency corresponds to changes in r
 - `notebooks/04_regression_analysis.ipynb`: Runs regression models and influence diagnostics.
 - `notebooks/05_forecasting_lstm.ipynb`: Runs LSTM, PFI, and forecasting evaluation.
 - `notebooks/06_forecasting_sarimax.ipynb`: Runs SARIMAX and forecasting evaluation.
+- `notebooks/07_forecast_plotting.ipynb`: Runs plots for combined LSTM and SARIMAX Test Prediction plots.
+
 
 - `data/raw/`: Original Google News RSS outputs prior to article extraction.
 - `data/external/`: Environmental and Valley Fever case-rate datasets adapted from the ValleyCast repository.
@@ -55,8 +57,10 @@ ValleyFever-NewsCast/
 │   ├── 02_article_processing_nlp.ipynb
 │   ├── 03_time_lag_preprocessing.ipynb
 │   ├── 04_regression_analysis.ipynb
-│   └── 05_forecasting_lstm.ipynb
-│   └── 06_forecasting_sarimax.ipynb
+│   ├── 05_forecasting_lstm.ipynb
+│   ├── 06_forecasting_sarimax.ipynb
+│   └── 07_forecast_plotting.ipynb
+
 │
 ├── src/
 │   ├── lstm_model.py
