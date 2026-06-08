@@ -124,7 +124,21 @@ class LightningLSTM(L.LightningModule):
         self.log("train_loss", loss)
         return loss
 
+# Compute Permutation Feature Importance
+def compute_pfi(X_test, y_test, model, scaler_y, feature_names, seq_length):
+    X_test_lstm = create_lstm_input(X_test, seq_length)
+    baseline_rmse = evaluate_model(model, X_test_lstm, y_test, scaler_y, seq_length)
 
+    pfi_scores = {}
+    for i, col in enumerate(feature_names):
+        X_test_permuted = X_test.copy()
+        np.random.shuffle(X_test_permuted[:, i])
+        X_perm_lstm = create_lstm_input(X_test_permuted, seq_length)
+        perm_rmse = evaluate_model(model, X_perm_lstm, y_test, scaler_y, seq_length)
+        pfi_scores[col] = perm_rmse - baseline_rmse
+
+    return dict(sorted(pfi_scores.items(), key=lambda x: x[1], reverse=True))
+    
 def run_lstm_pfi_experiment(
     county_name,
     num_features,
