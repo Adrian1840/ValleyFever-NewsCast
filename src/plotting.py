@@ -25,40 +25,42 @@ def plot_combined_vf_styled(county, df):
         name="News Articles",
         mode="markers+lines",
         line=dict(color=line_color, width=6),
-        marker=dict(size=11),
+        marker=dict(size=11, color=line_color),
         yaxis="y2"
     ))
 
     fig.update_layout(
+        title="",
         xaxis_title="Time",
-
-        yaxis=dict(
-            title="Case Rate",
-            titlefont=dict(color=bar_color),
-            tickfont=dict(color=bar_color),
-            showgrid=True,
-            gridcolor="rgba(0,0,0,0.12)"
-        ),
-
-        yaxis2=dict(
-            title="Number of Articles",
-            titlefont=dict(color=line_color),
-            tickfont=dict(color=line_color),
-            overlaying="y",
-            side="right",
-            showgrid=False
-        ),
-
-        xaxis=dict(
-            showgrid=True,
-            gridcolor="rgba(0,0,0,0.12)"
-        ),
-
+        template="plotly_white",
         autosize=False,
         width=1920,
         height=1080,
         font=dict(size=34),
-        template="plotly_white",
+        margin=dict(l=120, r=120, t=80, b=90),
+
+        yaxis=dict(
+            title="Case Rate",
+            showgrid=True,
+            gridwidth=1,
+            gridcolor="Gray",
+            griddash="dash",
+            showline=True,
+            linewidth=1.5,
+            linecolor="Gray",
+            mirror=True
+        ),
+
+        yaxis2=dict(
+            title="Number of Articles",
+            overlaying="y",
+            side="right",
+            showgrid=False,
+            showline=True,
+            linewidth=1.5,
+            linecolor="Gray",
+            mirror=True
+        ),
 
         legend=dict(
             x=0.04,
@@ -66,10 +68,25 @@ def plot_combined_vf_styled(county, df):
             xanchor="left",
             yanchor="top",
             bgcolor="white",
-            bordercolor="black",
-            borderwidth=2
+            bordercolor="Gray",
+            borderwidth=1.5
         )
     )
+
+    fig.update_xaxes(
+    showgrid=True,
+    gridwidth=1,
+    gridcolor="Gray",
+    griddash="dash",
+    showline=True,
+    linewidth=1.5,
+    linecolor="Gray",
+    mirror=True,
+    range=[
+        pd.to_datetime(df["Year-Month"].min()) - pd.DateOffset(days=20),
+        pd.to_datetime(df["Year-Month"].max()) + pd.DateOffset(days=20)
+    ]
+)
 
     return fig
     
