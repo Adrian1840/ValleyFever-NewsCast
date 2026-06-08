@@ -2,7 +2,13 @@ import numpy as np
 import torch
 from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt
+
 from lstm_model import LightningLSTM
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+import lightning as L
+from torch.optim import Adam
 
 # Convert 2D input into LSTM-ready 3D tensor
 def create_lstm_input(X, seq_length):
