@@ -1,6 +1,7 @@
 import pandas as pd
 import plotly.graph_objects as go
 from statsmodels.tsa.stattools import pacf
+import numpy as np
 
 def plot_combined_vf_styled(county, df):
     df = df.sort_values("Year-Month")
