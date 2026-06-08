@@ -3,91 +3,91 @@ import plotly.graph_objects as go
 from statsmodels.tsa.stattools import pacf
 import numpy as np
 
-def plot_combined_vf_styled(county, df):
-    df = df.sort_values("Year-Month")
+def plot_vf2(county, train_dates, train_actuals, train_predictions,
+             test_dates, test_actuals, test_predictions):
 
     fig = go.Figure()
 
-    bar_color = "#7499d4"
-    line_color = "#c22f53"
-
-    fig.add_trace(go.Bar(
-        x=df["Year-Month"],
-        y=df["VFRate"],
-        name="VF Case Rates",
-        marker_color=bar_color,
-        opacity=0.9,
-        yaxis="y"
+    fig.add_trace(go.Scatter(
+        x=train_dates,
+        y=train_actuals,
+        mode="markers+lines",
+        name="Train (True)"
     ))
 
     fig.add_trace(go.Scatter(
-        x=df["Year-Month"],
-        y=df["Num_Articles"],
-        name="News Articles",
+        x=train_dates,
+        y=train_predictions,
         mode="markers+lines",
-        line=dict(color=line_color, width=6),
-        marker=dict(size=11, color=line_color),
-        yaxis="y2"
+        name="Train Pred."
+    ))
+
+    fig.add_trace(go.Scatter(
+        x=test_dates,
+        y=test_actuals,
+        mode="markers+lines",
+        name="Test (True)"
+    ))
+
+    fig.add_trace(go.Scatter(
+        x=test_dates,
+        y=test_predictions,
+        mode="markers+lines",
+        name="Test Pred."
     ))
 
     fig.update_layout(
         title="",
         xaxis_title="Time",
+        yaxis_title="Case Rate",
         template="plotly_white",
         autosize=False,
-        width=1920,
+        width=1300,
         height=1080,
         font=dict(size=34),
         margin=dict(l=120, r=120, t=80, b=90),
 
-        yaxis=dict(
-            title="Case Rate",
-            showgrid=True,
-            gridwidth=1,
-            gridcolor="Gray",
-            griddash="dash",
-            showline=True,
-            linewidth=1.5,
-            linecolor="Gray",
-            mirror=True
-        ),
-
-        yaxis2=dict(
-            title="Number of Articles",
-            overlaying="y",
-            side="right",
-            showgrid=False,
-            showline=True,
-            linewidth=1.5,
-            linecolor="Gray",
-            mirror=True
-        ),
-
-        legend=dict(
-            x=0.04,
-            y=0.97,
-            xanchor="left",
-            yanchor="top",
-            bgcolor="white",
-            bordercolor="Gray",
-            borderwidth=1.5
-        )
+    legend=dict(
+      x=0.98,
+      y=0.98,
+      xanchor="right",
+      yanchor="top",
+      bgcolor="white",
+      bordercolor="Gray",
+      borderwidth=1.5
+  )
     )
 
     fig.update_xaxes(
-    showgrid=True,
-    gridwidth=1,
-    gridcolor="Gray",
-    griddash="dash",
-    showline=True,
-    linewidth=1.5,
-    linecolor="Gray",
-    mirror=True,
-    range=[
-        pd.to_datetime(df["Year-Month"].min()) - pd.DateOffset(days=20),
-        pd.to_datetime(df["Year-Month"].max()) + pd.DateOffset(days=20)
+        showgrid=True,
+        gridwidth=1,
+        gridcolor="Gray",
+        griddash="dash",
+        showline=True,
+        linewidth=1.5,
+        linecolor="Gray",
+        mirror=True,
+        range=[
+        pd.to_datetime(min(train_dates)) - pd.DateOffset(days=20),
+        pd.to_datetime(max(test_dates)) - pd.DateOffset(days=15)
     ]
-)
+    )
+
+    fig.update_yaxes(
+        showgrid=True,
+        gridwidth=1,
+        gridcolor="Gray",
+        griddash="dash",
+        showline=True,
+        linewidth=1.5,
+        linecolor="Gray",
+        mirror=True
+    )
+
+    fig.update_traces(
+        line=dict(width=6),
+        marker=dict(size=11)
+    )
 
     return fig
     
