@@ -90,6 +90,136 @@ def plot_vf2(county, train_dates, train_actuals, train_predictions,
     )
 
     return fig
+
+from plotly.subplots import make_subplots
+import plotly.graph_objects as go
+import pandas as pd
+
+def plot_vf_combined(
+        county,
+        train_dates,
+        train_actuals,
+        train_predictions,
+        test_dates,
+        test_actuals,
+        test_predictions,
+        sarimax_test_predictions=None):
+
+    fig = make_subplots(
+        rows=1,
+        cols=2,
+        # subplot_titles=("Training Split", "Testing Split"),
+        horizontal_spacing=0.08
+    )
+
+    # Training Split (left panel)
+
+    fig.add_trace(
+        go.Scatter(
+            x=train_dates,
+            y=train_actuals,
+            mode="markers+lines",
+            name="Train (True)"
+        ),
+        row=1, col=1
+    )
+
+    fig.add_trace(
+        go.Scatter(
+            x=train_dates,
+            y=train_predictions,
+            mode="markers+lines",
+            name="LSTM Train Pred."
+        ),
+        row=1, col=1
+    )
+
+    # Testing split (right panel)
+
+    fig.add_trace(
+        go.Scatter(
+            x=test_dates,
+            y=test_actuals,
+            mode="markers+lines",
+            name="Test (True)"
+        ),
+        row=1, col=2
+    )
+
+    fig.add_trace(
+        go.Scatter(
+            x=test_dates,
+            y=test_predictions,
+            mode="markers+lines",
+            name="LSTM Test Pred."
+        ),
+        row=1, col=2
+    )
+
+    if sarimax_test_predictions is not None:
+        fig.add_trace(
+            go.Scatter(
+                x=test_dates,
+                y=sarimax_test_predictions,
+                mode="markers+lines",
+                name="SARIMAX Test Pred."
+            ),
+            row=1, col=2
+        )
+
+    # Formatting 
+
+    fig.update_layout(
+        xaxis_title="Time",
+        yaxis_title="Case Rate",
+        template="plotly_white",
+        autosize=False,
+        width=1920,
+        height=1080,
+        font=dict(size=34),
+        margin=dict(l=120, r=120, t=100, b=90),
+
+        legend=dict(
+          x=0.44,          
+          y=0.98,
+          xanchor="right",
+          yanchor="top",
+          bgcolor="white",
+          bordercolor="black",
+          borderwidth=1.5
+    
+        )
+    )
+
+    # Axes Updates
+    fig.update_xaxes(
+        showgrid=True,
+        gridwidth=1,
+        gridcolor="Gray",
+        griddash="dash",
+        showline=True,
+        linewidth=1.5,
+        linecolor="Gray",
+        mirror=True
+    )
+
+    fig.update_yaxes(
+        showgrid=True,
+        gridwidth=1,
+        gridcolor="Gray",
+        griddash="dash",
+        showline=True,
+        linewidth=1.5,
+        linecolor="Gray",
+        mirror=True
+    )
+
+    fig.update_traces(
+        line=dict(width=6),
+        marker=dict(size=11)
+    )
+
+    return fig
     
 def run_lstm_pfi_experiment(
     county_name,
