@@ -459,29 +459,56 @@ def plot_sarimax_results(
     ))
 
     fig.update_layout(
+        title="",
         xaxis_title="Time",
         yaxis_title="Case Rate",
+        template="plotly_white",
         autosize=False,
-        width=1300,
+        width=1920,
         height=1080,
         font=dict(size=34),
-        template="plotly_white",
-        xaxis=dict(gridcolor="rgba(0,0,0,0.15)"),
-        yaxis=dict(gridcolor="rgba(0,0,0,0.15)"),
+        margin=dict(l=120, r=120, t=80, b=90),
+
         legend=dict(
-            x=1,
-            y=0.85,
+            x=0.98,
+            y=0.98,
             xanchor="right",
-            yanchor="bottom",
+            yanchor="top",
             bgcolor="white",
-            bordercolor="black",
-            borderwidth=2
+            bordercolor="Gray",
+            borderwidth=1.5
         )
     )
 
+    fig.update_xaxes(
+        showgrid=True,
+        gridwidth=1,
+        gridcolor="Gray",
+        griddash="dash",
+        showline=True,
+        linewidth=1.5,
+        linecolor="Gray",
+        mirror=True,
+        range=[
+            pd.to_datetime(train_actual.index.min()) - pd.DateOffset(days=20),
+            pd.to_datetime(test_actual.index.max()) + pd.DateOffset(days=20)
+        ]
+    )
+
+    fig.update_yaxes(
+        showgrid=True,
+        gridwidth=1,
+        gridcolor="Gray",
+        griddash="dash",
+        showline=True,
+        linewidth=1.5,
+        linecolor="Gray",
+        mirror=True
+    )
+
     fig.update_traces(
-        line=dict(width=7),
-        marker=dict(size=14)
+        line=dict(width=6),
+        marker=dict(size=11)
     )
 
     return fig
