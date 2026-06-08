@@ -1,6 +1,7 @@
 import pandas as pd
 import plotly.graph_objects as go
 from statsmodels.tsa.stattools import pacf
+from plotly.subplots import make_subplots
 import numpy as np
 
 def plot_vf2(county, train_dates, train_actuals, train_predictions,
@@ -90,10 +91,6 @@ def plot_vf2(county, train_dates, train_actuals, train_predictions,
     )
 
     return fig
-
-from plotly.subplots import make_subplots
-import plotly.graph_objects as go
-import pandas as pd
 
 def plot_vf_combined(
         county,
