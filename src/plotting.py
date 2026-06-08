@@ -105,91 +105,69 @@ def plot_vf_combined(
     fig = make_subplots(
         rows=1,
         cols=2,
-        # subplot_titles=("Training Split", "Testing Split"),
         horizontal_spacing=0.08
     )
 
-    # Training Split (left panel)
+    # Left panel: Training split
+    fig.add_trace(go.Scatter(
+        x=train_dates,
+        y=train_actuals,
+        mode="markers+lines",
+        name="Train (True)"
+    ), row=1, col=1)
 
-    fig.add_trace(
-        go.Scatter(
-            x=train_dates,
-            y=train_actuals,
-            mode="markers+lines",
-            name="Train (True)"
-        ),
-        row=1, col=1
-    )
+    fig.add_trace(go.Scatter(
+        x=train_dates,
+        y=train_predictions,
+        mode="markers+lines",
+        name="LSTM Train Pred."
+    ), row=1, col=1)
 
-    fig.add_trace(
-        go.Scatter(
-            x=train_dates,
-            y=train_predictions,
-            mode="markers+lines",
-            name="LSTM Train Pred."
-        ),
-        row=1, col=1
-    )
+    # Right panel: Testing split
+    fig.add_trace(go.Scatter(
+        x=test_dates,
+        y=test_actuals,
+        mode="markers+lines",
+        name="Test (True)"
+    ), row=1, col=2)
 
-    # Testing split (right panel)
-
-    fig.add_trace(
-        go.Scatter(
-            x=test_dates,
-            y=test_actuals,
-            mode="markers+lines",
-            name="Test (True)"
-        ),
-        row=1, col=2
-    )
-
-    fig.add_trace(
-        go.Scatter(
-            x=test_dates,
-            y=test_predictions,
-            mode="markers+lines",
-            name="LSTM Test Pred."
-        ),
-        row=1, col=2
-    )
+    fig.add_trace(go.Scatter(
+        x=test_dates,
+        y=test_predictions,
+        mode="markers+lines",
+        name="LSTM Test Pred."
+    ), row=1, col=2)
 
     if sarimax_test_predictions is not None:
-        fig.add_trace(
-            go.Scatter(
-                x=test_dates,
-                y=sarimax_test_predictions,
-                mode="markers+lines",
-                name="SARIMAX Test Pred."
-            ),
-            row=1, col=2
-        )
-
-    # Formatting 
+        fig.add_trace(go.Scatter(
+            x=test_dates,
+            y=sarimax_test_predictions,
+            mode="markers+lines",
+            name="SARIMAX Test Pred."
+        ), row=1, col=2)
 
     fig.update_layout(
-        xaxis_title="Time",
-        yaxis_title="Case Rate",
         template="plotly_white",
         autosize=False,
         width=1920,
         height=1080,
         font=dict(size=34),
-        margin=dict(l=120, r=120, t=100, b=90),
+        margin=dict(l=120, r=120, t=80, b=90),
 
         legend=dict(
-          x=0.44,          
-          y=0.98,
-          xanchor="right",
-          yanchor="top",
-          bgcolor="white",
-          bordercolor="black",
-          borderwidth=1.5
-    
+            x=0.55,
+            y=0.98,
+            xanchor="left",
+            yanchor="top",
+            bgcolor="white",
+            bordercolor="black",
+            borderwidth=1.5,
+            font=dict(size=28)
         )
     )
 
-    # Axes Updates
     fig.update_xaxes(
+        title_text="Time",
         showgrid=True,
         gridwidth=1,
         gridcolor="Gray",
@@ -201,6 +179,7 @@ def plot_vf_combined(
     )
 
     fig.update_yaxes(
+        title_text="Case Rate",
         showgrid=True,
         gridwidth=1,
         gridcolor="Gray",
@@ -215,6 +194,8 @@ def plot_vf_combined(
         line=dict(width=6),
         marker=dict(size=11)
     )
+
+
 
     return fig
     
