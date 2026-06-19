@@ -1,0 +1,8 @@
+{
+  "seq_length": 12.0,
+  "hidden_size": 16.0,
+  "dropout": 0.0,
+  "lr": 0.005,
+  "batch_size": 4.0,
+  "num_layers": 2.0
+}
