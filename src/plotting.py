@@ -194,6 +194,14 @@ def plot_vf_combined(
         marker=dict(size=11)
     )
 
+     # Testing split x-axis
+    fig.update_xaxes(
+        tickformat="%b %Y",
+        nticks=2,
+        row=1,
+        col=2
+    )
+
     return fig
     
     
