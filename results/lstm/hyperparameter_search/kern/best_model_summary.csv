@@ -1,0 +1,2 @@
+county,seq_length,hidden_size,dropout,lr,batch_size,num_layers,train_rmse,test_rmse,rmse_gap,test_pred_std,test_actual_std,test_std_ratio,num_features,train_size,test_size
+Kern,12.0,32.0,0.2,0.005,16.0,2.0,8.801376342773438,0.23933273553848267,-8.562043607234955,0.07520683854818344,0.32116708159446716,0.23416733176641677,10,73,14

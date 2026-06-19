@@ -1,0 +1,2 @@
+county,seq_length,hidden_size,dropout,lr,batch_size,num_layers,train_rmse,test_rmse,rmse_gap,test_pred_std,test_actual_std,test_std_ratio,num_features,train_size,test_size
+Fresno,12.0,64.0,0.0,0.001,8.0,1.0,0.9625447988510132,0.08939120918512344,-0.8731535896658897,0.24442052841186523,0.3633994162082672,0.672594719502207,11,73,14
