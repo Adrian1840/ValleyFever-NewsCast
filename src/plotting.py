@@ -92,6 +92,7 @@ def plot_vf2(county, train_dates, train_actuals, train_predictions,
 
     return fig
 
+
 def plot_vf_combined(
         county,
         train_dates,
@@ -108,7 +109,6 @@ def plot_vf_combined(
         horizontal_spacing=0.08
     )
 
-    # Left panel: Training split
     fig.add_trace(go.Scatter(
         x=train_dates,
         y=train_actuals,
@@ -123,7 +123,6 @@ def plot_vf_combined(
         name="LSTM Train Pred."
     ), row=1, col=1)
 
-    # Right panel: Testing split
     fig.add_trace(go.Scatter(
         x=test_dates,
         y=test_actuals,
@@ -155,9 +154,9 @@ def plot_vf_combined(
         margin=dict(l=120, r=120, t=80, b=90),
 
         legend=dict(
-            x=0.55,
+            x=0.44,
             y=0.98,
-            xanchor="left",
+            xanchor="right",
             yanchor="top",
             bgcolor="white",
             bordercolor="black",
@@ -195,9 +194,8 @@ def plot_vf_combined(
         marker=dict(size=11)
     )
 
-
-
     return fig
+    
     
 
 def rename_pfi_features(df):
