@@ -1,4 +1,4 @@
-# News Media Coverage Predictors of Valley Fever Case Rates
+# News Media Signals for Predicting Valley Fever Case Rates
 
 ## Project Overview
 
